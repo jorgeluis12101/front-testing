@@ -6,5 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./login-register.component.css']
 })
 export class LoginRegisterComponent {
+  LoginMode = true; // Alterna entre modo de inicio de sesión y registro
+
+  switchMode() {
+    this.LoginMode = !this.LoginMode;
+  }
 
 }
