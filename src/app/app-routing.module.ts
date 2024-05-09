@@ -7,11 +7,11 @@ const routes: Routes = [
     loadChildren: () => import('./public/public.module').then(m => m.PublicModule)
   },
   {
-    path: '',
+    path: 'ingreso',
     loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationModule)
   },
   {
-    path: '',
+    path: 'intranet',
     loadChildren: () => import('./intranet/intranet.module').then(m => m.IntranetModule)
   }
 ];
