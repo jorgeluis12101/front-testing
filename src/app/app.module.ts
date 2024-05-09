@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthInterceptor } from './service/interceptor/auth-interceptor.service';
 import {MatToolbarModule} from '@angular/material/toolbar';
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -17,8 +18,7 @@ import {MatToolbarModule} from '@angular/material/toolbar';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatToolbarModule
-
+    MatToolbarModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

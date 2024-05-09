@@ -21,6 +21,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ListaMascotaComponent } from './lista-mascota/lista-mascota.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 @NgModule({
   declarations: [
@@ -46,13 +48,13 @@ import { ListaMascotaComponent } from './lista-mascota/lista-mascota.component';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatOptionModule,
-    MatAutocompleteModule
-  
+    MatAutocompleteModule,
+    FullCalendarModule
   ],
-  
+
 }
 )
-export class IntranetModule { 
+export class IntranetModule {
   constructor() {
     console.log('intranet loaded');
   }

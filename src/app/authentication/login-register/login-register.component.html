@@ -7,15 +7,15 @@
         <div class="col-12 text-center align-self-center py-5">
           <div class="section pb-5 pt-5 pt-sm-2 text-center">
             <h6 class="mb-0 pb-3">
-              <span (click)="switchMode()">Iniciar Sesión</span>
-              <span (click)="switchMode()">Registrarse</span>
+              <span>Iniciar Sesión</span>
+              <span>Registrarse</span>
             </h6>
             <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" (change)="switchMode()"/>
             <label for="reg-log"></label>
-            
+
             <div class="card-3d-wrap mx-auto">
               <div class="card-3d-wrapper">
-                
+
                 <!-- Formulario de Login -->
                 <div class="card-front" *ngIf="isLoginMode">
                   <div class="center-wrap">
@@ -43,7 +43,7 @@
                     </div>
                   </div>
                 </div>
-  
+
                 <!-- Formulario de Registro -->
                 <div class="card-back" *ngIf="!isLoginMode">
                   <div class="center-wrap">
@@ -65,7 +65,7 @@
                         />
                         <i class="input-icon uil uil-user" style="position: absolute; left: 200px;"></i>
                       </div>
-  
+
                       <div class="form-group" style="display: flex;">
                         <input
                           type="tel"
@@ -82,7 +82,7 @@
                         />
                         <i class="input-icon uil uil-postcard" style="position: absolute; left: 200px;"></i>
                       </div>
-  
+
                       <div class="form-group mt-2">
                         <input
                           type="email"
@@ -92,7 +92,7 @@
                         />
                         <i class="input-icon uil uil-at"></i>
                       </div>
-  
+
                       <div class="form-group mt-2">
                         <input
                           type="text"
@@ -102,7 +102,7 @@
                         />
                         <i class="input-icon uil uil-user-check"></i>
                       </div>
-  
+
                       <div class="form-group mt-2">
                         <input
                           type="password"
@@ -112,12 +112,12 @@
                         />
                         <i class="input-icon uil uil-unlock"></i>
                       </div>
-  
+
                       <button class="btn mt-4" (click)="onRegister()">Registrarse</button>
                     </div>
                   </div>
                 </div>
-  
+
               </div>
             </div>
           </div>
@@ -125,6 +125,6 @@
       </div>
     </div>
   </div>
-  
+
 
   <app-footer></app-footer>
