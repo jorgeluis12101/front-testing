@@ -1,6 +1,5 @@
+
 <app-navbar-principal></app-navbar-principal>
-
-
 
 <div class="section">
     <div class="container">
@@ -13,11 +12,12 @@
             </h6>
             <input class="checkbox" type="checkbox" id="reg-log" name="reg-log" (change)="switchMode()"/>
             <label for="reg-log"></label>
+            
             <div class="card-3d-wrap mx-auto">
               <div class="card-3d-wrapper">
                 
                 <!-- Formulario de Login -->
-                <div class="card-front" *ngIf="LoginMode">
+                <div class="card-front" *ngIf="isLoginMode">
                   <div class="center-wrap">
                     <div class="section text-center">
                       <h4 class="mb-4 pb-3">Iniciar Sesión</h4>
@@ -26,7 +26,7 @@
                           type="text"
                           class="form-style"
                           placeholder="Usuario"
-                        
+                          [(ngModel)]="loginData.username"
                         />
                         <i class="input-icon uil uil-user-check"></i>
                       </div>
@@ -35,33 +35,33 @@
                           type="password"
                           class="form-style"
                           placeholder="Contraseña"
-                         
+                          [(ngModel)]="loginData.password"
                         />
                         <i class="input-icon uil uil-lock-alt"></i>
                       </div>
-                      <button class="btn mt-4" >Iniciar Sesión</button>
+                      <button class="btn mt-4" (click)="onLogin()">Iniciar Sesión</button>
                     </div>
                   </div>
                 </div>
   
                 <!-- Formulario de Registro -->
-                <div class="card-back" *ngIf="!LoginMode">
+                <div class="card-back" *ngIf="!isLoginMode">
                   <div class="center-wrap">
                     <div class="section text-center">
                       <h4 class="mb-3 pb-3">Crear Cuenta</h4>
-                      <div class="form-group" style="display: flex;">
+                      <div class="form-group mb-2 pr-4" style="display: flex;">
                         <input
                           type="text"
                           class="form-style"
                           placeholder="Apellidos"
-                         
+                          [(ngModel)]="registerData.apellido"
                         />
                         <i class="input-icon uil uil-user"></i>
                         <input
                           type="text"
-                          class="form-style"
+                          class="form-style "
                           placeholder="Nombres"
-                          
+                          [(ngModel)]="registerData.nombre"
                         />
                         <i class="input-icon uil uil-user" style="position: absolute; left: 200px;"></i>
                       </div>
@@ -71,14 +71,14 @@
                           type="tel"
                           class="form-style"
                           placeholder="Teléfono"
-                          
+                          [(ngModel)]="registerData.telefono"
                         />
                         <i class="input-icon uil uil-phone"></i>
                         <input
                           type="text"
                           class="form-style"
                           placeholder="DNI"
-                         
+                          [(ngModel)]="registerData.dni"
                         />
                         <i class="input-icon uil uil-postcard" style="position: absolute; left: 200px;"></i>
                       </div>
@@ -88,7 +88,7 @@
                           type="email"
                           class="form-style"
                           placeholder="Correo"
-                          
+                          [(ngModel)]="registerData.correo"
                         />
                         <i class="input-icon uil uil-at"></i>
                       </div>
@@ -98,7 +98,7 @@
                           type="text"
                           class="form-style"
                           placeholder="Usuario"
-                          
+                          [(ngModel)]="registerData.username"
                         />
                         <i class="input-icon uil uil-user-check"></i>
                       </div>
@@ -108,12 +108,12 @@
                           type="password"
                           class="form-style"
                           placeholder="Contraseña"
-                          
+                          [(ngModel)]="registerData.password"
                         />
-                        <i class="input-icon uil uil-unlock" style="position: absolute; left: 200px;"></i>
+                        <i class="input-icon uil uil-unlock"></i>
                       </div>
   
-                      <button class="btn mt-4">Registrarse</button>
+                      <button class="btn mt-4" (click)="onRegister()">Registrarse</button>
                     </div>
                   </div>
                 </div>
@@ -127,6 +127,4 @@
   </div>
   
 
-
-
-<app-footer></app-footer>
+  <app-footer></app-footer>

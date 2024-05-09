@@ -1,0 +1,55 @@
+<div class="container">
+    <h2>Registrar Mascota</h2>
+    <form [formGroup]="mascotaForm" (ngSubmit)="registrarMascota()">
+      <!-- Nombre de la Mascota -->
+      <div class="form-group">
+        <label for="nombreMascota">Nombre:</label>
+        <input type="text" id="nombreMascota" formControlName="nombreMascota" class="form-control" placeholder="Nombre de la mascota">
+      </div>
+  
+      <!-- Fecha de Nacimiento -->
+      <div class="form-group">
+        <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fechaNacimiento" formControlName="fechaNacimiento" class="form-control">
+      </div>
+  
+      <!-- Peso -->
+      <div class="form-group">
+        <label for="peso">Peso (kg):</label>
+        <input type="number" id="peso" formControlName="peso" class="form-control" placeholder="Peso en kilogramos">
+      </div>
+  
+      <!-- Alimentación -->
+      <div class="form-group">
+        <label for="alimentacion">Alimentación:</label>
+        <input type="text" id="alimentacion" formControlName="alimentacion" class="form-control" placeholder="Tipo de alimentación">
+      </div>
+  
+      <!-- Color -->
+      <div class="form-group">
+        <label for="color">Color:</label>
+        <input type="text" id="color" formControlName="color" class="form-control" placeholder="Color de la mascota">
+      </div>
+  
+      <!-- Detalles -->
+      <div class="form-group">
+        <label for="detalles">Detalles:</label>
+        <textarea id="detalles" formControlName="detalles" class="form-control" placeholder="Detalles adicionales"></textarea>
+      </div>
+  
+      <!-- Raza ID -->
+      <div class="form-group">
+        <label for="razaId">Raza ID:</label>
+        <input type="number" id="razaId" formControlName="razaId" class="form-control" placeholder="Identificador de la raza">
+      </div>
+  
+      <!-- Foto de la Mascota -->
+      <div class="form-group">
+        <label for="fotoMascota">Foto de la Mascota:</label>
+        <input type="file" id="fotoMascota" (change)="onFileSelect($event)" class="form-control-file">
+      </div>
+  
+      <!-- Botón de Envío -->
+      <button type="submit" class="btn btn-primary" [disabled]="mascotaForm.invalid">Registrar Mascota</button>
+    </form>
+  </div>

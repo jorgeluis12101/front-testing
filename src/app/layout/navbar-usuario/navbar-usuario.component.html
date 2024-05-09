@@ -1,1 +1,21 @@
-<p>navbar-usuario works!</p>
+<nav class="navbar">
+    <div class="navbar-container">
+        <a href="/" class="logo-link">
+            <img src="../../../assets/logopestnature.png" alt="Pets Nature Logo" class="logo">
+            Pets Nature
+        </a>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Servicios</a></li>
+            <li><a href="#about">Sobre Nosotros</a></li>
+
+        </ul>
+        <ul class="nav-item" *ngIf="isLoggedIn">
+            <button class="btn btn-danger" (click)="logout()">Cerrar Sesión</button>
+        </ul>
+        <ul class="nav-item" *ngIf="!isLoggedIn">
+            <button class="button signup" routerLink="/ingreso">Sign Up</button>
+        </ul>
+
+    </div>
+</nav>

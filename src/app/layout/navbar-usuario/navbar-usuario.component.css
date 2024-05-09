@@ -1,0 +1,48 @@
+.navbar {
+    background-color: #4b99a7;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+  }
+  .navbar-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+  }
+  .logo {
+    width: 70px;
+    height: 70px;
+    margin-right: 10px;
+  }
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  .nav-links li {
+    padding: 0 15px;
+  }
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .button.signup {
+    background-color: #ff4081;
+    border: none;
+    color: white;
+    padding: 10px 50px;
+    border-radius: 20px;
+    text-decoration: none;
+    display: inline-block;
+  }

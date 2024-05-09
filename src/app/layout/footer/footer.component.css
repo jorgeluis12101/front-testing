@@ -1,0 +1,37 @@
+.petsnature-footer {
+    background-color: #01122d;
+    color: #fff;
+    padding: 20px 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: Arial, sans-serif;
+  }
+  
+  .footer-content {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .footer-logo img {
+    height: 50px; /* Ajusta el tamaño del logo según tus necesidades /
+  }
+  
+  .footer-logo p {
+    margin-left: 10px;
+    font-size: 0.9em;
+    color: #aaa;
+  }
+  
+  .footer-social a {
+    color: #fff;
+    margin: 0 10px;
+    font-size: 1.2em; / Ajusta el tamaño de los iconos de las redes sociales */
+  }
+  
+  .footer-credits p {
+    font-size: 0.8em;
+    color: #aaa;
+  }

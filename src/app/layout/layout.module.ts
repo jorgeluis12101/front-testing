@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
-
+import {MatToolbarModule} from '@angular/material/toolbar';
 
 @NgModule({
   declarations: [
@@ -21,8 +21,8 @@ import { RouterLink } from '@angular/router';
     RouterLink,
     HttpClientModule,
     MatMenuModule,
-    MatButtonModule
-    
+    MatButtonModule,
+    MatToolbarModule
   ],
 
   exports: [
