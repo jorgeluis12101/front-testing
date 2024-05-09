@@ -7,7 +7,7 @@ import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.componen
 
 const routes: Routes = [
   
-    { path: '', component: InicioComponent, children: [
+    { path: 'intranet', component: InicioComponent, children: [
         {path: '', component: CalendarioComponent },
         {path: 'perfil', component: UsuarioPerfilComponent },
       ],
