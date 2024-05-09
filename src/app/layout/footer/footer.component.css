@@ -16,7 +16,7 @@
   }
   
   .footer-logo img {
-    height: 50px; /* Ajusta el tamaño del logo según tus necesidades /
+    height: 50px; 
   }
   
   .footer-logo p {
@@ -28,7 +28,7 @@
   .footer-social a {
     color: #fff;
     margin: 0 10px;
-    font-size: 1.2em; / Ajusta el tamaño de los iconos de las redes sociales */
+    font-size: 1.2em; 
   }
   
   .footer-credits p {

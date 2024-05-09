@@ -8,7 +8,7 @@ import baserUrl from './helper';
   providedIn: 'root'
 })
 export class MascotaService {
-  private apiUrl = `${baserUrl}/api/v1/mascota/agregar`; // Asegúrate de que esta es la URL correcta
+  private apiUrl = `${baserUrl}/api/v1/mascota/agregar`; 
 
   constructor(private http: HttpClient) { }
 

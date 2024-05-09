@@ -8,6 +8,7 @@ import { AdminGuard } from '../service/guards/admin.guard';
 import { UserComponent } from './user/user.component';
 import { UserGuard } from '../service/guards/user.guard';
 import { RMascotaComponent } from './r-mascota/r-mascota.component';
+import { ListaMascotaComponent } from './lista-mascota/lista-mascota.component';
 
 
 const routes: Routes = [
@@ -25,7 +26,11 @@ const routes: Routes = [
         {
           path: 'user', component: UserComponent, canActivate: [UserGuard],
           children: [
-            {path: '',  component: RMascotaComponent }
+            {path: '',  component: RMascotaComponent },
+            {path: '',  component: ListaMascotaComponent }
+
+
+
            ], 
         }
       ] 

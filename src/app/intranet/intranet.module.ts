@@ -14,12 +14,13 @@ import { RMascotaComponent } from './r-mascota/r-mascota.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core';
+import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { ListaMascotaComponent } from './lista-mascota/lista-mascota.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UsuarioPerfilComponent,
     UserComponent,
     AdminComponent,
-    RMascotaComponent
+    RMascotaComponent,
+    ListaMascotaComponent
   ],
   imports: [
     CommonModule,
@@ -43,7 +45,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatCheckboxModule,
     MatFormFieldModule,
     ReactiveFormsModule,
-    
+    MatOptionModule,
+    MatAutocompleteModule
+  
   ],
   
 }
