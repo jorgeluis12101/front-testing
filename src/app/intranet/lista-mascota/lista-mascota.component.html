@@ -1,1 +1,31 @@
-<p>lista-mascota works!</p>
+<div class="container mt-4">
+    <h2 class="mb-3">Lista de Mascotas</h2>
+    <div class="row">
+        <ng-container *ngIf="mascotas && mascotas.length > 0; else noData">
+            <div class="col-md-4 mb-4" *ngFor="let mascota of mascotas; let i = index">
+                <mat-card class="example-card">
+                    <mat-card-header>
+                        <div mat-card-avatar class="example-header-image"></div>
+                        <mat-card-title>{{ mascota.nombreMascota }}</mat-card-title>
+                        <mat-card-subtitle>{{ mascota.raza }}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img *ngIf="mascota.fotoMascota" [src]="'data:image/jpeg;base64,' + mascota.fotoMascota"
+                    alt="Foto de {{ mascota.nombreMascota }}" class="card-img-top">
+                    <mat-card-content>
+                        <p>Fecha de Nacimiento: {{ mascota.fechaNacimiento | date: 'mediumDate' }}</p>
+                        <p>Peso: {{ mascota.peso }} kg</p>
+                        <p>Alimentación: {{ mascota.alimentacion }}</p>
+                        <p>Color: {{ mascota.color }}</p>
+                        <p>Detalles: {{ mascota.detalles }}</p>
+                        <p>Raza: {{ mascota.raza }}</p>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </ng-container>
+    </div>
+    <ng-template #noData>
+        <div class="alert alert-warning" role="alert">
+            No hay mascotas registradas.
+        </div>
+    </ng-template>
+</div>

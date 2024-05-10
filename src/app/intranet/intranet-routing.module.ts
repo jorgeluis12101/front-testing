@@ -12,8 +12,8 @@ import { ListaMascotaComponent } from './lista-mascota/lista-mascota.component';
 
 
 const routes: Routes = [
-
-    { path: '', component: InicioComponent,
+  
+    { path: '', component: InicioComponent, 
     children: [
         {path: 'calendario', component: CalendarioComponent },
         {path: 'perfil', component: UsuarioPerfilComponent },
@@ -21,28 +21,28 @@ const routes: Routes = [
           path: 'admin', component: AdminComponent, canActivate: [AdminGuard],
           children: [
 
-           ],
+           ], 
         },
         {
           path: 'user', component: UserComponent, canActivate: [UserGuard],
           children: [
             {path: '',  component: RMascotaComponent },
-            {path: 'mascotas',  component: ListaMascotaComponent }
+            {path: 'lista-mascotas',  component: ListaMascotaComponent }
 
 
 
-           ],
+           ], 
         }
-      ]
+      ] 
   },
-
-
+    
+  
 ];
-
+    
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class IntranetRoutingModule {
+export class IntranetRoutingModule { 
 
 }
