@@ -10,7 +10,6 @@ import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
 import { RMascotaComponent } from './r-mascota/r-mascota.component';
 
-
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -18,11 +17,12 @@ import { MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog'; // Añadir MatDialogModule aquí
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ListaMascotaComponent } from './lista-mascota/lista-mascota.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-
+import { EventModalComponent } from './event-modal/event-modal.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +32,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     UserComponent,
     AdminComponent,
     RMascotaComponent,
-    ListaMascotaComponent
+    ListaMascotaComponent,
+    EventModalComponent
   ],
   imports: [
     CommonModule,
@@ -46,17 +47,16 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     MatButtonModule,
     MatCheckboxModule,
     MatFormFieldModule,
+    MatDialogModule, // Añadir MatDialogModule aquí
     ReactiveFormsModule,
     MatOptionModule,
     MatAutocompleteModule,
-    FullCalendarModule
-  ],
-
-}
-)
+    FullCalendarModule,
+    FormsModule
+  ]
+})
 export class IntranetModule {
   constructor() {
     console.log('intranet loaded');
   }
 }
-

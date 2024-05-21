@@ -1,1 +1,46 @@
-hola
+<div class="container mt-5" *ngIf="usuario">
+    <div class="profile-card">
+      <h1>Perfil de Usuario</h1>
+      <div *ngIf="!editMode">
+        <p><strong>Nombre:</strong> {{ usuario.nombre }}</p>
+        <p><strong>Apellido:</strong> {{ usuario.apellido }}</p>
+        <p><strong>DNI:</strong> {{ usuario.dni }}</p>
+        <p><strong>Teléfono:</strong> {{ usuario.telefono }}</p>
+        <p><strong>Correo:</strong> {{ usuario.correo }}</p>
+        <p><strong>Username:</strong> {{ usuario.username }}</p>
+        <button class="btn btn-custom" (click)="habilitarEdicion()">Editar Perfil</button>
+        <button class="btn btn-danger-custom" (click)="eliminarCuenta()">Eliminar Cuenta</button>
+      </div>
+      <div *ngIf="editMode">
+        <form (ngSubmit)="actualizarPerfil()" class="mt-4">
+          <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input id="nombre" [(ngModel)]="updatedDatos.nombre" name="nombre" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input id="apellido" [(ngModel)]="updatedDatos.apellido" name="apellido" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="dni">DNI:</label>
+            <input id="dni" [(ngModel)]="updatedDatos.dni" name="dni" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="telefono">Teléfono:</label>
+            <input id="telefono" [(ngModel)]="updatedDatos.telefono" name="telefono" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="correo">Correo:</label>
+            <input id="correo" [(ngModel)]="updatedDatos.correo" name="correo" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input id="username" [(ngModel)]="updatedDatos.username" name="username" class="form-control">
+          </div>
+          <button type="submit" class="btn btn-custom">Guardar Cambios</button>
+          <button type="button" class="btn btn-secondary" (click)="editMode = false">Cancelar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  
