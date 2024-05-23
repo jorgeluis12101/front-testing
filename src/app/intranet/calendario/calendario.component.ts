@@ -1,12 +1,11 @@
-import { Component, ChangeDetectorRef } from '@angular/core';
-import { CalendarOptions, DateSelectArg, EventClickArg, EventApi } from '@fullcalendar/core';
+import { Component, ChangeDetectorRef, OnInit } from '@angular/core';
+import { CalendarOptions, DateSelectArg, EventClickArg, EventApi, EventInput, EventDropArg } from '@fullcalendar/core';
 import interactionPlugin from '@fullcalendar/interaction';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import { MatDialog } from '@angular/material/dialog';
-import { INITIAL_EVENTS, createEventId } from '../event-utils';
-import { DatosRegistroEvento, EventoService } from 'src/app/service/evento.service';
+import { DatosRegistroEvento, EventoService, Evento } from 'src/app/service/evento.service';
 import { EventModalComponent, EventData } from '../event-modal/event-modal.component';
 
 @Component({
@@ -14,7 +13,7 @@ import { EventModalComponent, EventData } from '../event-modal/event-modal.compo
   templateUrl: './calendario.component.html',
   styleUrls: ['./calendario.component.css']
 })
-export class CalendarioComponent {
+export class CalendarioComponent implements OnInit {
   calendarVisible = true;
   calendarOptions: CalendarOptions = {
     plugins: [
@@ -29,15 +28,16 @@ export class CalendarioComponent {
       right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
     },
     initialView: 'dayGridMonth',
-    initialEvents: INITIAL_EVENTS, // alternatively, use the `events` setting to fetch from a feed
     weekends: true,
     editable: true,
     selectable: true,
     selectMirror: true,
     dayMaxEvents: true,
+    events: [],
     select: this.handleDateSelect.bind(this),
     eventClick: this.handleEventClick.bind(this),
-    eventsSet: this.handleEvents.bind(this)
+    eventsSet: this.handleEvents.bind(this),
+    eventDrop: this.handleEventDrop.bind(this) // Añadir el manejador de arrastrar y soltar
   };
   currentEvents: EventApi[] = [];
 
@@ -46,6 +46,47 @@ export class CalendarioComponent {
     private eventoService: EventoService,
     public dialog: MatDialog
   ) {}
+
+  ngOnInit() {
+    this.cargarEventos();
+  }
+
+  cargarEventos() {
+    this.eventoService.obtenerEventos().subscribe(
+      (eventos: Evento[]) => {
+        console.log('Eventos obtenidos del backend:', eventos);
+        const calendarEvents: EventInput[] = eventos.map(evento => ({
+          id: String(evento.id),
+          title: `${evento.tipoEvento} - ${evento.veterinaria}`,
+          start: evento.fecha,
+          end: evento.fecha,
+          allDay: true
+        }));
+        console.log('Eventos configurados para el calendario:', calendarEvents);
+        this.calendarOptions.events = calendarEvents;
+        this.currentEvents = calendarEvents as EventApi[];
+        this.changeDetector.detectChanges();
+      },
+      (error) => {
+        console.error('Error al cargar los eventos', error);
+      }
+    );
+  }
+
+  handleEventDrop(eventDropInfo: EventDropArg) {
+    const eventoId = Number(eventDropInfo.event.id);
+    const nuevaFecha = eventDropInfo.event.startStr;
+
+    this.eventoService.actualizarFechaEvento(eventoId, nuevaFecha).subscribe(
+      () => {
+        console.log('Evento actualizado con éxito');
+        this.cargarEventos(); // Recargar eventos después de mover uno
+      },
+      (error) => {
+        console.error('Error al actualizar la fecha del evento', error);
+      }
+    );
+  }
 
   handleCalendarToggle() {
     this.calendarVisible = !this.calendarVisible;
@@ -64,7 +105,8 @@ export class CalendarioComponent {
         costo: '',
         tipoEvento: '',
         archivo: null,
-        mascotaId: 0
+        mascotaId: 0,
+        fecha: selectInfo.startStr // Pasar la fecha seleccionada al modal
       } as EventData
     });
 
@@ -76,18 +118,14 @@ export class CalendarioComponent {
           costo: result.costo,
           tipoEvento: result.tipoEvento,
           archivo: result.archivo,
-          mascotaId: result.mascotaId
+          mascotaId: result.mascotaId,
+          fecha: result.fecha // Asegurarse de incluir la fecha seleccionada
         };
 
         this.eventoService.registrarEvento(newEvent).subscribe(
           () => {
-            selectInfo.view.calendar.addEvent({
-              id: createEventId(),
-              title: result.veterinaria,
-              start: selectInfo.startStr,
-              end: selectInfo.endStr,
-              allDay: selectInfo.allDay
-            });
+            console.log('Evento registrado con éxito:', newEvent);
+            this.cargarEventos(); // Recargar eventos después de agregar uno nuevo
           },
           (error) => {
             console.error('Error al registrar el evento', error);
@@ -99,12 +137,20 @@ export class CalendarioComponent {
 
   handleEventClick(clickInfo: EventClickArg) {
     if (confirm(`¿Estás seguro de que quieres eliminar el evento '${clickInfo.event.title}'?`)) {
-      clickInfo.event.remove();
+      this.eventoService.eliminarEvento(Number(clickInfo.event.id)).subscribe(
+        () => {
+          console.log('Evento eliminado con éxito');
+          clickInfo.event.remove();
+        },
+        (error) => {
+          console.error('Error al eliminar el evento', error);
+        }
+      );
     }
   }
 
   handleEvents(events: EventApi[]) {
     this.currentEvents = events;
-    this.changeDetector.detectChanges(); // workaround for pressionChangedAfterItHasBeenCheckedError
+    this.changeDetector.detectChanges(); // Trabajo en torno a pressionChangedAfterItHasBeenCheckedError
   }
 }

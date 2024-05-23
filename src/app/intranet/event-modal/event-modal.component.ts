@@ -7,8 +7,9 @@ export interface EventData {
   descripcion: string;
   costo: string;
   tipoEvento: string;
-  archivo: File | null;
+  archivo: string | null;
   mascotaId: number;
+  fecha: string; // Agrega la fecha aquí
 }
 
 @Component({
@@ -31,7 +32,8 @@ export class EventModalComponent {
       costo: ['', Validators.required],
       tipoEvento: ['', Validators.required],
       archivo: [null],
-      mascotaId: [data.mascotaId, Validators.required]
+      mascotaId: [data.mascotaId, Validators.required],
+      fecha: [data.fecha, Validators.required] // Asigna la fecha al formulario
     });
   }
 
@@ -39,7 +41,12 @@ export class EventModalComponent {
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       this.selectedFile = input.files[0];
-      this.eventForm.patchValue({ archivo: this.selectedFile });
+      const reader = new FileReader();
+      reader.onload = () => {
+        const base64 = reader.result as string;
+        this.eventForm.patchValue({ archivo: base64.split(',')[1] }); // Remove the "data:*/*;base64," part
+      };
+      reader.readAsDataURL(this.selectedFile);
     }
   }
 
@@ -49,8 +56,7 @@ export class EventModalComponent {
 
   onSubmit(): void {
     if (this.eventForm.valid) {
-      const formData = { ...this.eventForm.value, archivo: this.selectedFile };
-      this.dialogRef.close(formData);
+      this.dialogRef.close(this.eventForm.value);
     }
   }
 }

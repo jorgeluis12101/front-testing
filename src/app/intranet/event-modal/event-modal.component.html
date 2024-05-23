@@ -25,6 +25,10 @@
       <mat-label>ID de Mascota</mat-label>
       <input matInput formControlName="mascotaId">
     </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fecha</mat-label>
+      <input matInput formControlName="fecha" [disabled]="true">
+    </mat-form-field>
   </form>
 </div>
 <div mat-dialog-actions>

@@ -44,16 +44,21 @@ export class LoginRegisterComponent {
           if (role === 'ADMIN') {
             this.router.navigate(['/intranet/admin']);
           } else {
-            this.router.navigate(['/intranet/user']);
+            this.router.navigate(['/intranet/user/lista-mascotas']);
           }
         });
       },
       error => {
         console.error('Error al iniciar sesión', error);
+        Swal.fire({
+          icon: 'error',
+          title: 'Usuario o contraseña incorrectos',
+          text: 'Por favor, intenta nuevamente.',
+        });
       }
     );
   }
-  
+
 
   onRegister() {
     this.authService.register(this.registerData).subscribe(

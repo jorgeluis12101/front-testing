@@ -1,50 +1,95 @@
-.profile-card {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 20px;
-  }
-  
-  .profile-card h1 {
-    font-size: 24px;
-    margin-bottom: 20px;
-  }
-  
-  .profile-card p {
-    font-size: 16px;
-    color: #555;
-  }
-  
-  .profile-card button {
-    margin-right: 10px;
-  }
-  
-  .form-control {
-    margin-bottom: 15px;
-  }
-  
-  .btn-custom {
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 50px;
-    padding: 10px 20px;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-custom:hover {
-    background-color: #0056b3;
-  }
-  
-  .btn-danger-custom {
-    background-color: #dc3545;
-    color: #fff;
-    border-radius: 50px;
-    padding: 10px 20px;
-    transition: background-color 0.3s;
-  }
-  
-  .btn-danger-custom:hover {
-    background-color: #b02a37;
-  }
-  
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin-bottom: 300px;
+  padding-left: 15px;
+  padding-right: 15px;
+  display: flex;
+  align-items: center;
+}
+
+.row {
+  width: 100%;
+}
+
+.profile-card-left,
+.profile-card-right {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top: 20px;
+  border: 1px solid #ddd; /* Añadir un borde más visible */
+}
+
+.profile-card-left {
+  text-align: center;
+}
+
+.profile-card-left h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.profile-card-left p {
+  font-size: 16px;
+  color: #555;
+}
+
+.profile-card-right h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.profile-card-right p {
+  font-size: 16px;
+  color: #555;
+}
+
+.profile-card-left .btn,
+.profile-card-right .btn {
+  margin: 10px 5px;
+}
+
+.profile-img {
+  width: 100%;
+  max-width: 150px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+}
+
+.form-control {
+  margin-bottom: 15px;
+}
+
+.btn-custom {
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.btn-custom:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger-custom {
+  background-color: #dc3545;
+  color: #fff;
+  border-radius: 50px;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+}
+
+.btn-danger-custom:hover {
+  background-color: #b02a37;
+}
+
+.text-center .btn {
+  margin: 10px 5px;
+}
