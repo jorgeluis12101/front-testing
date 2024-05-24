@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { InicioComponent } from './inicio.component';
-import { CalendarioComponent } from './calendario/calendario.component';
+
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { AdminComponent } from './admin/admin.component';
 import { AdminGuard } from '../service/guards/admin.guard';
@@ -15,7 +15,7 @@ const routes: Routes = [
   
     { path: '', component: InicioComponent, 
     children: [
-        {path: 'calendario', component: CalendarioComponent },
+
         {path: 'perfil', component: UsuarioPerfilComponent },
         {
           path: 'admin', component: AdminComponent, canActivate: [AdminGuard],

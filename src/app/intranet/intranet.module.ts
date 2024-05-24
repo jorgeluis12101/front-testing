@@ -4,7 +4,6 @@ import { IntranetRoutingModule } from './intranet-routing.module';
 import { InicioComponent } from './inicio.component';
 import { LayoutModule } from '../layout/layout.module';
 import { HttpClientModule } from '@angular/common/http';
-import { CalendarioComponent } from './calendario/calendario.component';
 import { UsuarioPerfilComponent } from './usuario-perfil/usuario-perfil.component';
 import { UserComponent } from './user/user.component';
 import { AdminComponent } from './admin/admin.component';
@@ -22,18 +21,17 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { ListaMascotaComponent } from './lista-mascota/lista-mascota.component';
 import { FullCalendarModule } from '@fullcalendar/angular';
-import { EventModalComponent } from './event-modal/event-modal.component';
+
 
 @NgModule({
   declarations: [
     InicioComponent,
-    CalendarioComponent,
     UsuarioPerfilComponent,
     UserComponent,
     AdminComponent,
     RMascotaComponent,
     ListaMascotaComponent,
-    EventModalComponent
+
   ],
   imports: [
     CommonModule,
@@ -52,7 +50,8 @@ import { EventModalComponent } from './event-modal/event-modal.component';
     MatOptionModule,
     MatAutocompleteModule,
     FullCalendarModule,
-    FormsModule
+    FormsModule,
+    
   ]
 })
 export class IntranetModule {

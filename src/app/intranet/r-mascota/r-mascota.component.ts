@@ -89,8 +89,13 @@ export class RMascotaComponent {
     });
   }
 
-  formatDate(date: Date): string {
-    return date.toISOString().split('T')[0]; // Formato 'yyyy-MM-dd'
+  formatDate(date: any): string {
+    if (date instanceof Date) {
+      return date.toISOString().split('T')[0];
+    } else if (typeof date === 'string') {
+      return new Date(date).toISOString().split('T')[0];
+    }
+    return date;
   }
 
   buscarRaza(event: Event): void {

@@ -10,7 +10,7 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
 
 @NgModule({
   declarations: [
-    LoginRegisterComponent
+    LoginRegisterComponent,
   ],
   imports: [
     CommonModule,
@@ -18,7 +18,8 @@ import { AuthenticationRoutingModule } from './authentication-routing.module';
     FormsModule,
     ReactiveFormsModule,
     LayoutModule,
-    HttpClientModule
+    HttpClientModule,
+    
   ]
 })
 
